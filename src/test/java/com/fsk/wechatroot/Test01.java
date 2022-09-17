@@ -74,7 +74,7 @@ public class Test01 {
 
     @Test
     void submitAllAccount(){
-        HttpUtil httpUtil=new HttpUtil();
+       /* HttpUtil httpUtil=new HttpUtil();
         List<User> userList=userMapper.getAll();
         for (User u:userList
              ) {
@@ -85,7 +85,7 @@ public class Test01 {
             String result=httpUtil.okhttp_post("http://8.142.32.26:5701/open/envs?t=1661933847428",ck);
             System.out.println(result);
             System.out.println(u.getJdname()+":添加完成");
-        }
+        }*/
     }
 
 }

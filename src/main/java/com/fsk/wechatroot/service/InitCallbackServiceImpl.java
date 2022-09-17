@@ -133,7 +133,7 @@ public class InitCallbackServiceImpl implements InitCallbackService{
                             }
                         }
                     }
-                    for (FutureTask<String> f:futureTaskList
+                    for (FutureTask f:futureTaskList
                          ) {
                         try {
                             backtext=backtext+f.get();

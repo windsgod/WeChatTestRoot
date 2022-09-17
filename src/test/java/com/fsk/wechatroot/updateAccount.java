@@ -48,7 +48,7 @@ public class updateAccount {
 
     @Test
     void testFailure(){
-            Map<String, List<String>> map = new HashMap<>();
+        /*    Map<String, List<String>> map = new HashMap<>();
             int SUCCESS = 0, ERR = 0;
             HttpUtil httpUtil = new HttpUtil();
             String token = weChatUtil.getToken();
@@ -75,7 +75,7 @@ public class updateAccount {
             ) {
                 System.out.println(s+":"+s1);
             }
-        }
+        }*/
     }
 
 }
