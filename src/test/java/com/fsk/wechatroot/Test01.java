@@ -1,5 +1,8 @@
 package com.fsk.wechatroot;
 
+import com.alibaba.fastjson.JSONObject;
+import com.fsk.wechatroot.Util.HttpUtil;
+import com.fsk.wechatroot.dao.User;
 import com.fsk.wechatroot.mapper.ConfigMapper;
 import com.fsk.wechatroot.mapper.MenuMapper;
 import com.fsk.wechatroot.mapper.UserMapper;
@@ -36,6 +39,8 @@ public class Test01 {
     @Autowired
     InitCallbackServiceImpl initCallbackService;
 
+
+
     @Test
     void TestUserMapper() {
 
@@ -64,7 +69,23 @@ public class Test01 {
         }
         System.out.println("1");
     }*/
+        System.out.println("test");
+    }
 
+    @Test
+    void submitAllAccount(){
+        HttpUtil httpUtil=new HttpUtil();
+        List<User> userList=userMapper.getAll();
+        for (User u:userList
+             ) {
+            System.out.println(u.getJdname()+":开始添加");
+            //格式化提交body
+            String ck="[{\"value\":\""+u.getCk()+"\",\"name\":\"JD_COOKIE\",\"remarks\":\""+u.getJdname()+"\"}]";
+            //添加到青龙面板里面
+            String result=httpUtil.okhttp_post("http://8.142.32.26:5701/open/envs?t=1661933847428",ck);
+            System.out.println(result);
+            System.out.println(u.getJdname()+":添加完成");
+        }
     }
 
 }
