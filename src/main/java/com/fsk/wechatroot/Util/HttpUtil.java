@@ -42,7 +42,7 @@ public class HttpUtil {
 
         Request request = new Request.Builder()
 
-                .url("http://8.142.32.26:5701/open/auth/token?client_id=5fp9-FyWTuQn&client_secret=zT_nR-PfcVoUnpsemKb0ORoK")
+                .url("http://8.142.32.26:5701/open/auth/token?client_id=o8aplLyXP_7x&client_secret=n2693ffSApUinun4j_eNLvti")
 
                 .get()
 

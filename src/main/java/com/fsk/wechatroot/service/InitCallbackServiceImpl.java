@@ -12,7 +12,6 @@ import com.fsk.wechatroot.dao.User;
 import com.fsk.wechatroot.mapper.ConfigMapper;
 import com.fsk.wechatroot.mapper.MenuMapper;
 import com.fsk.wechatroot.mapper.UserMapper;
-import jdk.nashorn.internal.scripts.JS;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.httpclient.NameValuePair;

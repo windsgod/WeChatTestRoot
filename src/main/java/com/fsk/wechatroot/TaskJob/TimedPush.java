@@ -177,21 +177,6 @@ public class TimedPush {
                 JSONObject jsonObject = JSONObject.parseObject(body);
                 String result = httpUtil.okhttp_post("https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=" + token, jsonObject);
                 log.info("失效账户推送用户返回结果" + result);
-                String body1 = "{\n" +
-                        "    \"touser\": \"oQnEX6nGmt2ZAmX0-J8Iykr_mv3E\",\n" +
-                        "    \"template_id\": \"UZNcQ_tCJwH4E4vAmd1OFin5GOSPkHS63SjOassbzEA\",\n" +
-                        "    \"url\": \"\",\n" +
-                        "    \"topcolor\": \"#FF0000\",\n" +
-                        "    \"data\": {\n" +
-                        "        \"jdname\": {\n" +
-                        "            \"value\": \""+s1+"\",\n" +
-                        "            \"color\": \"#173177\"\n" +
-                        "        }\n" +
-                        "    }\n" +
-                        "}";
-                JSONObject jsonObject1 = JSONObject.parseObject(body);
-                String result1 = httpUtil.okhttp_post("https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=" + token, jsonObject1);
-                log.info("失效账户推送管理员返回结果" + result1);
             }
         }
     }
