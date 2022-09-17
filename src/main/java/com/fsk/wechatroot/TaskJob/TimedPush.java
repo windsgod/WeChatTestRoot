@@ -176,7 +176,7 @@ public class TimedPush {
                         "}";
                 JSONObject jsonObject = JSONObject.parseObject(body);
                 String result = httpUtil.okhttp_post("https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=" + token, jsonObject);
-                log.info("失效账户推送用户返回结果" + result);
+                log.info("失效账户推送用户返回结果:" + result);
             }
         }
     }

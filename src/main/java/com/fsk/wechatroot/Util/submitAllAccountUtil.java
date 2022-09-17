@@ -22,13 +22,13 @@ public class submitAllAccountUtil {
         List<User> userList=userMapper.getAll();
         for (User u:userList
         ) {
-            System.out.println(u.getJdname()+":开始添加");
+            System.out.println("开始添加:"+u.getJdname());
             //格式化提交body
             String ck="[{\"value\":\""+u.getCk()+"\",\"name\":\"JD_COOKIE\",\"remarks\":\""+u.getJdname()+"\"}]";
             //添加到青龙面板里面
             String result=httpUtil.okhttp_post("http://8.142.32.26:5701/open/envs?t=1661933847428",ck);
             System.out.println(result);
-            System.out.println(u.getJdname()+":添加完成");
+            System.out.println("添加完成:"+u.getJdname());
         }
     }
 
