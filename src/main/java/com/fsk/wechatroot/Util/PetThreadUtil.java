@@ -64,6 +64,10 @@ public class PetThreadUtil implements Callable<String> {
             msg=msg+"***********************************\n";
             return msg;
         }
+        if ( ((int) jsonObject2.getJSONObject("result").get("resultCode"))==410){
+            msg=msg+"活动太火爆了，稍后试试吧\n***********************************\n";
+            return msg;
+        }
 
         if (((int) jsonObject2.getJSONObject("result").get("userStatus"))==0){
             msg=msg+"【东东萌宠】活动未开启!\n";
