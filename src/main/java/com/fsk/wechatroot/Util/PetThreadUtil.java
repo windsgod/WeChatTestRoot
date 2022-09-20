@@ -71,16 +71,16 @@ public class PetThreadUtil implements Callable<String> {
         }
 
         if (((int) jsonObject2.getJSONObject("result").get("userStatus"))==0){
-            msg=msg+"【东东萌宠】活动未开启!\n";
+            msg=msg+"【东东萌宠】：活动未开启!\n";
         }
         if (((int) jsonObject2.getJSONObject("result").get("petStatus"))==5){
-            msg=msg+"【东东萌宠】"+ ((String) jsonObject2.getJSONObject("result").getJSONObject("goodsInfo").get("goodsName"))+"已可领取!\\n";
+            msg=msg+"【东东萌宠】："+ ((String) jsonObject2.getJSONObject("result").getJSONObject("goodsInfo").get("goodsName"))+"已可领取!\\n";
         }
         if(((int) jsonObject2.getJSONObject("result").get("petStatus"))==6){
-            msg=msg+"【东东萌宠】未选择物品! \n";
+            msg=msg+"【东东萌宠】：未选择物品! \n";
         }
 
-        msg=msg+"【东东萌宠】:"+((String) jsonObject2.getJSONObject("result").getJSONObject("goodsInfo").get("goodsName"))+","
+        msg=msg+"【东东萌宠】："+((String) jsonObject2.getJSONObject("result").getJSONObject("goodsInfo").get("goodsName"))+","
                     +((int) jsonObject2.getJSONObject("result").get("medalNum"))+"/"+
                     ((int) jsonObject2.getJSONObject("result").getJSONObject("goodsInfo").get("exchangeMedalNum"))+"块("+
                     (Double.valueOf(String.valueOf(jsonObject2.getJSONObject("result").get("medalPercent"))))+"%)\n";
