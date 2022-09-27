@@ -4,9 +4,9 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://8.142.32.26:3306/wechat?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
-    username: root
-    password: fsk0425
+    url: 
+    username: 
+    password: 
     hikari:
       # 连接池名
       pool-name: DateHikariCP
