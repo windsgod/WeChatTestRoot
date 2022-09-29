@@ -47,37 +47,42 @@ public class PetThreadUtil implements Callable<String> {
         map1.put("loginWQBiz","pet-town");
         map1.put("clientVersion","9.0.4");
 
-
-        Map<String,String> map2=new HashMap();
-        map2.put("body","%7B%22version%22%3A2%2C%22channel%22%3A%22app%22%7D");
-        map2.put("appid","wh5");
-        map2.put("loginWQBiz","pet-town");
-        map2.put("clientVersion","9.0.4");
-
-
         String result2=httpUtil.okhttp_post("https://api.m.jd.com/client.action?functionId=initPetTown",cookie,map1);
         log.info("萌宠接口2"+result2);
 
         JSONObject jsonObject2 = JSONObject.parseObject(result2);
 
         if ( result2.equals("请求失败")){
-            msg=msg+"***********************************\n";
+            msg=msg+"【东东萌宠】：请求失败";
+            log.info(msg);
             return msg;
         }
         if (Integer.parseInt(((String) jsonObject2.get("resultCode")))==410){
-            msg=msg+"活动太火爆了，稍后试试吧\n***********************************\n";
-            System.out.println(msg);
+            msg=msg+"【东东萌宠】：活动太火爆了，稍后试试吧\n***********************************\n";
+            log.info(msg);
             return msg;
         }
 
         if (((int) jsonObject2.getJSONObject("result").get("userStatus"))==0){
             msg=msg+"【东东萌宠】：活动未开启!\n";
+            log.info(msg);
+            return msg;
         }
         if (((int) jsonObject2.getJSONObject("result").get("petStatus"))==5){
             msg=msg+"【东东萌宠】："+ ((String) jsonObject2.getJSONObject("result").getJSONObject("goodsInfo").get("goodsName"))+"已可领取!\\n";
+            log.info(msg);
+            return msg;
         }
         if(((int) jsonObject2.getJSONObject("result").get("petStatus"))==6){
             msg=msg+"【东东萌宠】：未选择物品! \n";
+            log.info(msg);
+            return msg;
+        }
+
+        if (String.valueOf(jsonObject2.getJSONObject("result").get("goodsInfo")).equals("")){
+            msg=msg+"【东东萌宠】暂未选购新的商品! \n";
+            log.info(msg);
+            return msg;
         }
 
         msg=msg+"【东东萌宠】："+((String) jsonObject2.getJSONObject("result").getJSONObject("goodsInfo").get("goodsName"))+","
@@ -85,11 +90,8 @@ public class PetThreadUtil implements Callable<String> {
                     ((int) jsonObject2.getJSONObject("result").getJSONObject("goodsInfo").get("exchangeMedalNum"))+"块("+
                     (Double.valueOf(String.valueOf(jsonObject2.getJSONObject("result").get("medalPercent"))))+"%)\n";
 
-        if (String.valueOf(jsonObject2.getJSONObject("result").get("goodsInfo")).equals("")){
-            msg=msg+"【东东萌宠】暂未选购新的商品! \n";
-        }
-        log.info(msg);
-        msg=msg+"***********************************\n";
+
+
         return msg;
     }
 
