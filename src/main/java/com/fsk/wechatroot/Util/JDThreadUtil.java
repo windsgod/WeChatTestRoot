@@ -47,7 +47,7 @@ public class JDThreadUtil implements Callable<String> {
         log.info("thread1.join()执行完毕");
         thread2.join();
         log.info("thread2.join()执行完毕");*/
-        while (thread2.isAlive()){
+        while (thread2.isAlive() || thread1.isAlive() || thread.isAlive()){
             Thread.sleep(100);
             log.info("任务主线程等待100");
         }
@@ -57,7 +57,7 @@ public class JDThreadUtil implements Callable<String> {
         String msg2=result1.get();
         String msg3=result2.get();
 
-        backtext=backtext+msg1+msg2+msg3;
+        backtext=backtext+msg1+msg2+msg3+"▂﹍▂﹍▂﹍▂﹍▂﹍▂﹍▂﹍▂";
 
         log.info("JDThreadUtil结束");
 
