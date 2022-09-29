@@ -4,6 +4,7 @@ package com.fsk.wechatroot.Util;
 import com.alibaba.fastjson.JSONObject;
 import okhttp3.*;
 import org.apache.commons.httpclient.NameValuePair;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -19,6 +20,7 @@ import java.util.concurrent.TimeUnit;
  * FileName: HttpUtil
  * Description: 访问网页接口工具类
  */
+@Component
 public class HttpUtil {
 
     static public OkHttpClient client;
@@ -163,13 +165,16 @@ public class HttpUtil {
 
         String str1="";
         String reg = "[^\u4e00-\u9fa5]";
-        String str = Cookie.replaceAll(reg, "");
-        try {
-            str1= URLEncoder.encode(str,"utf-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
+        if (Cookie.matches(reg)) {
+            String str = Cookie.replaceAll(reg, "");
+            try {
+                str1= URLEncoder.encode(str,"utf-8");
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+            Cookie=Cookie.replaceAll(str,str1);
         }
-        Cookie=Cookie.replaceAll(str,str1);
+
 
         String result = "";
 
@@ -214,13 +219,15 @@ public class HttpUtil {
 
         String str1="";
         String reg = "[^\u4e00-\u9fa5]";
-        String str = ck.replaceAll(reg, "");
-        try {
-            str1= URLEncoder.encode(str,"utf-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
+        if (ck.matches(reg)) {
+            String str = ck.replaceAll(reg, "");
+            try {
+                str1= URLEncoder.encode(str,"utf-8");
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+            ck=ck.replaceAll(str,str1);
         }
-        ck=ck.replaceAll(str,str1);
 
         String authorization=getAuthorization();
 
@@ -264,13 +271,15 @@ public class HttpUtil {
 
         String str1="";
         String reg = "[^\u4e00-\u9fa5]";
-        String str = ck.replaceAll(reg, "");
-        try {
-            str1= URLEncoder.encode(str,"utf-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
+        if (ck.matches(reg)) {
+            String str = ck.replaceAll(reg, "");
+            try {
+                str1= URLEncoder.encode(str,"utf-8");
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+            ck=ck.replaceAll(str,str1);
         }
-        ck=ck.replaceAll(str,str1);
 
         MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded; charset=utf-8");
         String result = "";
