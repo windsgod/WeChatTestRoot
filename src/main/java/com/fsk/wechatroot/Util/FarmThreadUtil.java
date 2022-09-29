@@ -46,11 +46,12 @@ public class FarmThreadUtil implements Callable<String> {
 
         String result=httpUtil.okhttp_post("https://api.m.jd.com/client.action?functionId=initForFarm",cookie,map);
         JSONObject jsonObject1=JSONObject.parseObject(result);
-        String code= (String) jsonObject1.get("code");
-        if(!code.equals("0")){
-            msg=msg+"【东东农场】："+jsonObject1.get("echo");
+        int treeState= Integer.valueOf(String.valueOf(jsonObject1.get("treeState")));
+        if(treeState<0){
+            msg=msg+"【东东农场】：未种植水果，请手动选择种子！\n";
             return msg;
         }
+
         String name= (String) jsonObject1.getJSONObject("farmUserPro").get("name");//种植名称
         int treeEnergy= (int) jsonObject1.getJSONObject("farmUserPro").get("treeEnergy");//已浇水
         int treeTotalEnergy= (int) jsonObject1.getJSONObject("farmUserPro").get("treeTotalEnergy");//共需要浇水
