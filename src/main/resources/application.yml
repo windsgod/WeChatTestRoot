@@ -1,12 +1,13 @@
 server:
   port: 8881
+  max-http-header-size: 8096 #解决Invalid character found in method name报错
 
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: 
-    username: 
-    password: 
+    url:
+    username:
+    password:
     hikari:
       # 连接池名
       pool-name: DateHikariCP
@@ -31,3 +32,5 @@ mybatis:
 logging:
   file:
     name: /usr/local/docker/Project/WeChatRoot_SpringBoot/mylog.log
+
+
