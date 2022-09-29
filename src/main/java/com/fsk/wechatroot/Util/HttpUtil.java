@@ -6,6 +6,8 @@ import okhttp3.*;
 import org.apache.commons.httpclient.NameValuePair;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.HashMap;
 
 import java.util.Map;
@@ -159,6 +161,16 @@ public class HttpUtil {
 
     public static String okhttp_get(String get_url,String Cookie){
 
+        String str1="";
+        String reg = "[^\u4e00-\u9fa5]";
+        String str = Cookie.replaceAll(reg, "");
+        try {
+            str1= URLEncoder.encode(str,"utf-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        Cookie=Cookie.replaceAll(str,str1);
+
         String result = "";
 
         Request request = new Request.Builder()
@@ -200,6 +212,16 @@ public class HttpUtil {
 
     public static String okhttp_post(String get_url,String ck){
 
+        String str1="";
+        String reg = "[^\u4e00-\u9fa5]";
+        String str = ck.replaceAll(reg, "");
+        try {
+            str1= URLEncoder.encode(str,"utf-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        ck=ck.replaceAll(str,str1);
+
         String authorization=getAuthorization();
 
         MediaType mediaType = MediaType.parse("application/json; charset=utf-8");
@@ -239,6 +261,16 @@ public class HttpUtil {
 
 
     public static String okhttp_post(String get_url, String ck, Map<String,String> map){
+
+        String str1="";
+        String reg = "[^\u4e00-\u9fa5]";
+        String str = ck.replaceAll(reg, "");
+        try {
+            str1= URLEncoder.encode(str,"utf-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        ck=ck.replaceAll(str,str1);
 
         MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded; charset=utf-8");
         String result = "";
