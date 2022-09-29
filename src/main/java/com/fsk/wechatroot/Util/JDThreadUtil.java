@@ -57,7 +57,7 @@ public class JDThreadUtil implements Callable<String> {
         String msg2=result1.get();
         String msg3=result2.get();
 
-        backtext=backtext+msg1+msg2+msg3+"▂﹍▂﹍▂﹍▂﹍▂﹍▂﹍▂﹍▂";
+        backtext=backtext+msg1+msg2+msg3+"▂﹍▂﹍▂﹍▂﹍▂﹍▂﹍▂﹍▂\n";
 
         log.info("JDThreadUtil结束");
 
