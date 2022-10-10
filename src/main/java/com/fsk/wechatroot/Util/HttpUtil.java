@@ -165,8 +165,9 @@ public class HttpUtil {
 
         String str1="";
         String reg = "[^\u4e00-\u9fa5]";
-        if (Cookie.matches(reg)) {
-            String str = Cookie.replaceAll(reg, "");
+        String str = Cookie.replaceAll(reg, "");
+
+        if (str.length()>0) {
             try {
                 str1= URLEncoder.encode(str,"utf-8");
             } catch (UnsupportedEncodingException e) {
@@ -175,7 +176,7 @@ public class HttpUtil {
             Cookie=Cookie.replaceAll(str,str1);
         }
 
-
+        System.out.println(Cookie);
         String result = "";
 
         Request request = new Request.Builder()
@@ -219,8 +220,8 @@ public class HttpUtil {
 
         String str1="";
         String reg = "[^\u4e00-\u9fa5]";
-        if (ck.matches(reg)) {
-            String str = ck.replaceAll(reg, "");
+        String str = ck.replaceAll(reg, "");
+        if (str.length()>0) {
             try {
                 str1= URLEncoder.encode(str,"utf-8");
             } catch (UnsupportedEncodingException e) {
@@ -271,8 +272,8 @@ public class HttpUtil {
 
         String str1="";
         String reg = "[^\u4e00-\u9fa5]";
-        if (ck.matches(reg)) {
-            String str = ck.replaceAll(reg, "");
+        String str = ck.replaceAll(reg, "");
+        if (str.length()>0) {
             try {
                 str1= URLEncoder.encode(str,"utf-8");
             } catch (UnsupportedEncodingException e) {
