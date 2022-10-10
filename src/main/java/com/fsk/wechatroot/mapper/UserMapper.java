@@ -29,7 +29,7 @@ public interface UserMapper {
     @Select("select * from user where ck=#{ck}")
     User selectByCk(String ck);
 
-    @Insert("insert user value (id,#{username},#{jdname},#{ck},#{time},0)")
+    @Insert("insert user value (id,#{username},#{jdname},#{ck},#{time},0,1)")
     int insertUser(User user);
 
     @Select("select * from user where username=#{username} and jdname=#{jdname}")
