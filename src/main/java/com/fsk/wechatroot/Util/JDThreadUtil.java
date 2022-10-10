@@ -54,11 +54,15 @@ public class JDThreadUtil implements Callable<String> {
 
 
         String msg1=result.get();
+        if (msg1.matches("ck已经失效！请重新提交ck")){
+            backtext=backtext+msg1;
+            log.info("JDThreadUtil结束");
+            return backtext;
+        }
+
         String msg2=result1.get();
         String msg3=result2.get();
-
         backtext=backtext+msg1+msg2+msg3+"▂﹍▂﹍▂﹍▂﹍▂﹍▂﹍▂﹍▂\n";
-
         log.info("JDThreadUtil结束");
 
         return backtext;
